@@ -101,7 +101,7 @@ export default function Header() {
                   className={classes.title}
                   color="secondary"
                 >
-                  NextAI
+                  AI Society
                 </Typography>
               </div>
               <div className={classes.center1}>

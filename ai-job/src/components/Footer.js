@@ -20,7 +20,9 @@ function Reviews() {
   const classes = useStyles();
 
   return (
-    <section className={classes.mainSection}>NextAI Copyright © 2023.</section>
+    <section className={classes.mainSection}>
+      AI Society Copyright © 2023.
+    </section>
   );
 }
 
