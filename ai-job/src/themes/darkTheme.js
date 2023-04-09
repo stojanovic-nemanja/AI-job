@@ -1,4 +1,7 @@
 import { createTheme } from "@material-ui/core/styles";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+
+const breakpoints = createBreakpoints({});
 
 const darkTheme = createTheme({
   palette: {
@@ -21,7 +24,16 @@ const darkTheme = createTheme({
   typography: {
     fontFamily: ["Roboto", "sans-serif"].join(","),
     h1: {
-      fontSize: "3rem",
+      fontSize: "2.5vw",
+      [breakpoints.down("lg")]: {
+        fontSize: "3.2vw",
+      },
+      [breakpoints.down("md")]: {
+        fontSize: "4.0vw",
+      },
+      [breakpoints.down("sm")]: {
+        fontSize: "5.5vw",
+      },
       fontWeight: 500,
       marginBottom: "1rem",
     },
@@ -36,7 +48,16 @@ const darkTheme = createTheme({
       marginBottom: "1rem",
     },
     body1: {
-      fontSize: "1rem",
+      fontSize: "1.0vw",
+      [breakpoints.down("lg")]: {
+        fontSize: "1.25vw",
+      },
+      [breakpoints.down("md")]: {
+        fontSize: "1.7vw",
+      },
+      [breakpoints.down("sm")]: {
+        fontSize: "1.00rem",
+      },
       lineHeight: 1.5,
       marginBottom: "1rem",
     },

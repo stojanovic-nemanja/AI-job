@@ -8,16 +8,24 @@ import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   mainSection: {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/ai_big.png)`,
-    backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 100%",
+    overflow: "hidden",
+    position: "relative",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(3),
     flexDirection: "column",
     aspectRatio: "2046 / 1686",
+  },
+  mainSectionBackgroundImage: {
+    opacity: 1,
+    [theme.breakpoints.down("md")]: {
+      opacity: 0.3,
+    },
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "auto",
   },
   mainText: {
     marginBottom: theme.spacing(4),
@@ -26,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   bodyText: {
     marginBottom: theme.spacing(4),
     textAlign: "center",
-    fontSize: "1.2rem",
   },
   iconWrapper: {
     display: "flex",
@@ -48,14 +55,37 @@ const useStyles = makeStyles((theme) => ({
     height: "60px",
     width: "250px",
     fontSize: "1.2rem",
+    [theme.breakpoints.down("lg")]: {
+      height: "55px",
+      width: "220px",
+      fontSize: "1.2rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "50px",
+      width: "200px",
+      fontSize: "1.0rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "40px",
+      width: "150px",
+      fontSize: "0.9rem",
+    },
   },
   centerSection: {
-    marginTop: "-35%",
+    position: "relative",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: "800px",
+    maxWidth: "40vw",
+    marginTop: "15vw",
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "50vw",
+    },
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "70vw",
+    },
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "90vw",
+    },
   },
 }));
 
@@ -84,6 +114,11 @@ function MainContent() {
 
   return (
     <section className={classes.mainSection}>
+      <img
+        className={classes.mainSectionBackgroundImage}
+        alt=""
+        src="/assets/ai_big.png"
+      />
       <div className={classes.centerSection}>
         <motion.div
           className="container"

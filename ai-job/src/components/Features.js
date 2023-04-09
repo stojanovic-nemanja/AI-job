@@ -43,10 +43,19 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "1400px",
     display: "flex",
     flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+
     padding: theme.spacing(4),
   },
   botEl: {
     maxWidth: "33%",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100%",
+      marginBottom: theme.spacing(5),
+    },
+
     marginRight: theme.spacing(4),
   },
   iconStyle: {
@@ -54,6 +63,9 @@ const useStyles = makeStyles((theme) => ({
     height: 40,
     color: "#00EBAA",
     marginBottom: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: theme.spacing(0),
+    },
   },
   titleEl: {
     fontSize: "1.4rem",
@@ -81,6 +93,9 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     maxWidth: "33%",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100%",
+    },
   },
 }));
 

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
     flexDirection: "column",
   },
   mainText: {
@@ -27,6 +27,17 @@ const useStyles = makeStyles((theme) => ({
   video: {
     marginBottom: theme.spacing(14),
     maxWidth: "100%",
+    width: "1240px",
+    height: "auto",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%",
+    },
+  },
+  newLine: {
+    display: "block",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -58,6 +69,9 @@ function VideoSection(props) {
     root: null,
     rootMargin: "500px 0px",
   });
+  // text that also displays new line
+  var text = "Job automation is coming. Are you ready?";
+
   const controls = useAnimation();
   useEffect(() => {
     if (inView) {
@@ -77,17 +91,13 @@ function VideoSection(props) {
       >
         <motion.div variants={item}>
           <Typography variant="h1" className={classes.mainText}>
-            Job automation is coming. Are you ready?
+            Job automation is coming. &nbsp;
+            <div className={classes.newLine}></div>
+            Are you ready?
           </Typography>
         </motion.div>
         <motion.div variants={item}>
-          <video
-            width="1240"
-            height="auto"
-            controls
-            poster="assets/Elon.png"
-            className={classes.video}
-          >
+          <video controls poster="assets/Elon.png" className={classes.video}>
             <source src="assets/Elon.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

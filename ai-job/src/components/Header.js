@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,7 +7,10 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useScrollTrigger } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import { Link } from "react-scroll";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -49,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
   center1: {
     display: "flex",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
     width: "40%",
     // space elements inside by 10px
     "& > *": {
@@ -57,13 +63,48 @@ const useStyles = makeStyles((theme) => ({
   },
   right1: {
     display: "flex",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
     width: "20%",
+  },
+  rightMobile1: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+    },
+    justifyContent: "right",
+    alignItems: "right",
+    width: "60%",
+  },
+  menuItem: {
+    color: "white",
+    marginBottom: theme.spacing(0),
+    paddingBottom: theme.spacing(1),
+    marginTop: theme.spacing(0),
+    paddingTop: theme.spacing(1),
+  },
+  menuItemCommunity: {
+    marginBottom: theme.spacing(0),
+    paddingBottom: theme.spacing(1),
+    marginTop: theme.spacing(0),
+    paddingTop: theme.spacing(1),
+    backgroundColor: "#ff4081",
   },
 }));
 
 export default function Header() {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
   const handleVideoSection = () => {
-    console.log("Bla123");
     const element = document.getElementById("video-section");
     if (element) {
       // 👇 Will scroll smoothly to the top of the next section
@@ -90,12 +131,12 @@ export default function Header() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <ElevationScroll>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
-            <div className={classes.center}>
-              <div className={classes.left1}>
+            <Box className={classes.center}>
+              <Box className={classes.left1}>
                 <Typography
                   variant="h6"
                   className={classes.title}
@@ -103,19 +144,19 @@ export default function Header() {
                 >
                   AI Society
                 </Typography>
-              </div>
-              <div className={classes.center1}>
-                <Link to="video-section" smooth={true} duration={500}>
-                  <Button color="secondary">Video</Button>
-                </Link>
+              </Box>
+              <Box className={classes.center1}>
+                <Button color="secondary" onClick={handleVideoSection}>
+                  Video
+                </Button>
                 <Button color="secondary" onClick={handleFeatures}>
                   Features
                 </Button>
                 <Button color="secondary" onClick={handleReviews}>
                   Quote
                 </Button>
-              </div>
-              <div className={classes.right1}>
+              </Box>
+              <Box className={classes.right1}>
                 <Button
                   color="secondary"
                   variant="outlined"
@@ -129,11 +170,74 @@ export default function Header() {
                 >
                   JOIN THE COMMUNITY
                 </Button>
-              </div>
-            </div>
+              </Box>
+              <Box className={classes.rightMobile1}>
+                <IconButton onClick={handleOpenNavMenu}>
+                  <MenuIcon color="secondary" />
+                </IconButton>
+
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}
+                >
+                  <Link to="video-section" smooth={true} duration={500}>
+                    <MenuItem
+                      onClick={handleCloseNavMenu}
+                      className={classes.menuItem}
+                    >
+                      Video
+                    </MenuItem>
+                  </Link>
+                  <Link to="features" smooth={true} duration={500}>
+                    <MenuItem
+                      onClick={handleCloseNavMenu}
+                      className={classes.menuItem}
+                    >
+                      Features
+                    </MenuItem>
+                  </Link>
+                  <Link to="reviews" smooth={true} duration={500}>
+                    <MenuItem
+                      onClick={handleCloseNavMenu}
+                      className={classes.menuItem}
+                    >
+                      Reviews
+                    </MenuItem>
+                  </Link>
+
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseNavMenu();
+                      window.open(
+                        "https://5159732834495.gumroad.com/l/AI_Job",
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }}
+                    className={classes.menuItemCommunity}
+                  >
+                    Join the community
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </Box>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-    </div>
+    </Box>
   );
 }
