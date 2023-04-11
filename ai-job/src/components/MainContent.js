@@ -15,11 +15,18 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     flexDirection: "column",
     aspectRatio: "2046 / 1686",
+    [theme.breakpoints.down("xs")]: {
+      aspectRatio: "633 / 1471",
+    },
   },
   mainSectionBackgroundImage: {
     opacity: 1,
+    display: "block",
     [theme.breakpoints.down("md")]: {
       opacity: 0.3,
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
     },
     position: "absolute",
     left: 0,
@@ -27,6 +34,21 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "auto",
   },
+  mainSectionBackgroundImage2: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "auto",
+    opacity: 0.3,
+    [theme.breakpoints.up("xs")]: {
+      display: "none",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+    },
+  },
+
   mainText: {
     marginBottom: theme.spacing(4),
     textAlign: "center",
@@ -66,6 +88,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.0rem",
     },
     [theme.breakpoints.down("sm")]: {
+      height: "45px",
+      width: "170px",
+      fontSize: "1.0rem",
+    },
+    [theme.breakpoints.down("xs")]: {
       height: "40px",
       width: "150px",
       fontSize: "0.9rem",
@@ -85,6 +112,10 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       maxWidth: "90vw",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "40vw",
+      maxWidth: "80vw",
     },
   },
 }));
@@ -118,6 +149,11 @@ function MainContent() {
         className={classes.mainSectionBackgroundImage}
         alt=""
         src="/assets/ai_big.png"
+      />
+      <img
+        className={classes.mainSectionBackgroundImage2}
+        alt=""
+        src="/assets/ai_small.png"
       />
       <div className={classes.centerSection}>
         <motion.div

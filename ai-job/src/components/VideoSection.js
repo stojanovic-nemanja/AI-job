@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(2),
+    [theme.breakpoints.down("xs")]: {
+      padding: theme.spacing(0),
+    },
     flexDirection: "column",
   },
   mainText: {
@@ -37,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     [theme.breakpoints.up("md")]: {
       display: "none",
+    },
+  },
+  newLine2: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
     },
   },
 }));
@@ -67,7 +76,7 @@ function VideoSection(props) {
 
   const { ref, inView } = useInView({
     root: null,
-    rootMargin: "500px 0px",
+    threshold: 0.2,
   });
   // text that also displays new line
   var text = "Job automation is coming. Are you ready?";
@@ -81,17 +90,17 @@ function VideoSection(props) {
   }, [controls, inView]);
 
   return (
-    <section className={classes.mainSection} id={id}>
+    <section className={classes.mainSection} id={id} ref={ref}>
       <motion.div
         className={classes.mainSection}
         variants={container}
         initial="hidden"
         animate={controls}
-        ref={ref}
       >
         <motion.div variants={item}>
           <Typography variant="h1" className={classes.mainText}>
-            Job automation is coming. &nbsp;
+            Job automation <div className={classes.newLine2}></div> is coming.
+            &nbsp;
             <div className={classes.newLine}></div>
             Are you ready?
           </Typography>

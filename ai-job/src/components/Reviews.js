@@ -22,11 +22,22 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     padding: theme.spacing(4),
+    [theme.breakpoints.down("md")]: {
+      padding: theme.spacing(1),
+    },
   },
   mainText: {
     paddingRight: theme.spacing(10),
     maxWidth: "50%",
     fontSize: "1.5rem",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.8vw",
+      paddingRight: theme.spacing(2),
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.8vw",
+      paddingRight: theme.spacing(2),
+    },
   },
   img: {
     maxWidth: "50%",
@@ -38,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(7),
     marginBottom: theme.spacing(12),
     textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: theme.spacing(6),
+      marginTop: theme.spacing(3),
+    },
   },
 }));
 
@@ -67,7 +82,7 @@ function Reviews(props) {
   const classes = useStyles();
   const { ref, inView } = useInView({
     root: null,
-    rootMargin: "200px 0px",
+    threshold: 0.2,
   });
   const controls = useAnimation();
   useEffect(() => {
@@ -78,13 +93,12 @@ function Reviews(props) {
   }, [controls, inView]);
 
   return (
-    <section className={classes.mainSection} id={id}>
+    <section className={classes.mainSection} id={id} ref={ref}>
       <motion.div
         className="container"
         variants={container}
         initial="hidden"
         animate={controls}
-        ref={ref}
       >
         <motion.div variants={item}>
           <Typography variant="h1" className={classes.title}>

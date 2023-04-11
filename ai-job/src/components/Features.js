@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     padding: theme.spacing(3),
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(1),
+    },
     flexDirection: "column",
   },
   mainText: {
@@ -24,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     maxWidth: "600px",
     // change size of text
-    fontSize: "2.5rem",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "2.5rem",
+    },
   },
   aboveText: {
     marginTop: theme.spacing(6),
@@ -37,17 +42,20 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(6),
     maxWidth: "780px",
     color: "#808080",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5.2vw",
+    },
   },
   bottom: {
     marginBottom: theme.spacing(4),
     maxWidth: "1400px",
     display: "flex",
     flexDirection: "row",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
-
     padding: theme.spacing(4),
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      padding: theme.spacing(1),
+    },
   },
   botEl: {
     maxWidth: "33%",
@@ -55,8 +63,9 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "100%",
       marginBottom: theme.spacing(5),
     },
-
-    marginRight: theme.spacing(4),
+    [theme.breakpoints.up("sm")]: {
+      marginRight: theme.spacing(2),
+    },
   },
   iconStyle: {
     width: 40,
@@ -68,10 +77,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleEl: {
-    fontSize: "1.4rem",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1.4rem",
+    },
   },
   textEl: {
     fontSize: "1rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "4.5vw",
+    },
     color: "#808080",
   },
   mainTextComp: {
@@ -79,22 +93,47 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     maxWidth: "600px",
     // change size of text
-    fontSize: "2.1rem",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "2.1rem",
+    },
   },
   par1Comp: {
     textAlign: "center",
     marginBottom: theme.spacing(6),
     maxWidth: "500px",
     color: "#808080",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "5.5vw",
+    },
   },
   logos: {
+    display: "block",
     maxWidth: "1400px",
     marginBottom: theme.spacing(7),
+    justifyContent: "center",
+    alignItems: "center",
   },
   logo: {
     maxWidth: "33%",
+    marginLeft: "0vw",
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "100%",
+      maxWidth: "50%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "80%",
+      marginLeft: "10vw",
+    },
+  },
+  logoHP: {
+    maxWidth: "33%",
+    marginLeft: "0vw",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "50%",
+      marginLeft: "25vw",
+    },
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "80%",
+      marginLeft: "10vw",
     },
   },
 }));
@@ -126,7 +165,7 @@ function Features(props) {
 
   const { ref, inView } = useInView({
     root: null,
-    rootMargin: "500px 0px",
+    threshold: 0.2,
   });
   const controls = useAnimation();
   useEffect(() => {
@@ -137,7 +176,7 @@ function Features(props) {
   }, [controls, inView]);
 
   return (
-    <section className={classes.mainSection} id={id}>
+    <section className={classes.mainSection} id={id} ref={ref}>
       <motion.div
         className={classes.mainSection}
         variants={container}
@@ -228,7 +267,7 @@ function Features(props) {
               alt="logo"
               width="440"
               height="auto"
-              className={classes.logo}
+              className={classes.logoHP}
             />
           </div>
         </motion.div>

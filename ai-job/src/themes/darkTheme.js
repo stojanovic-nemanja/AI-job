@@ -32,8 +32,12 @@ const darkTheme = createTheme({
         fontSize: "4.0vw",
       },
       [breakpoints.down("sm")]: {
-        fontSize: "5.5vw",
+        fontSize: "5.4vw",
       },
+      [breakpoints.down("xs")]: {
+        fontSize: "9.5vw",
+      },
+
       fontWeight: 500,
       marginBottom: "1rem",
     },
@@ -41,6 +45,9 @@ const darkTheme = createTheme({
       fontSize: "2rem",
       fontWeight: 500,
       marginBottom: "1rem",
+      [breakpoints.down("xs")]: {
+        fontSize: "9.5vw",
+      },
     },
     h3: {
       fontSize: "1.5rem",
@@ -56,7 +63,10 @@ const darkTheme = createTheme({
         fontSize: "1.7vw",
       },
       [breakpoints.down("sm")]: {
-        fontSize: "1.00rem",
+        fontSize: "3vw",
+      },
+      [breakpoints.down("xs")]: {
+        fontSize: "5.0vw",
       },
       lineHeight: 1.5,
       marginBottom: "1rem",
