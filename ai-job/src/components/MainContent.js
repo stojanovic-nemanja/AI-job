@@ -5,15 +5,6 @@ import ChatIcon from "@material-ui/icons/Chat";
 import PersonIcon from "@material-ui/icons/Person";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import { motion } from "framer-motion";
-import ReactPixel from "react-facebook-pixel";
-
-const options = {
-  autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
-  debug: false, // enable logs
-};
-ReactPixel.init("246426464555298", undefined, options);
-
-ReactPixel.pageView(); // For tracking page view
 
 const useStyles = makeStyles((theme) => ({
   mainSection: {
@@ -189,14 +180,13 @@ function MainContent() {
               variant="contained"
               color="secondary"
               className={classes.buttonClass}
-              onClick={() => {
-                ReactPixel.track("Button");
+              onClick={() =>
                 window.open(
                   "https://5159732834495.gumroad.com/l/AI_Job",
                   "_blank",
                   "noopener,noreferrer"
-                );
-              }}
+                )
+              }
             >
               Join us now!
             </Button>
