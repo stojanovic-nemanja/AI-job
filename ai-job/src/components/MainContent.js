@@ -180,13 +180,16 @@ function MainContent() {
               variant="contained"
               color="secondary"
               className={classes.buttonClass}
-              onClick={() =>
+              onClick={() => {
+                <script type="text/javascript">
+                  fbq("track", "Join_button");
+                </script>;
                 window.open(
                   "https://5159732834495.gumroad.com/l/AI_Job",
                   "_blank",
                   "noopener,noreferrer"
-                )
-              }
+                );
+              }}
             >
               Join us now!
             </Button>
