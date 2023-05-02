@@ -129,7 +129,8 @@ export default function Header() {
   };
 
   const handleJoinButtonClick = () => {
-    <script> fbq("track", "Join_button"); </script>;
+    // eslint-disable-next-line no-undef
+    fbq("track", "Button");
     window.open(
       "https://5159732834495.gumroad.com/l/AI_Job",
       "_blank",
