@@ -128,6 +128,15 @@ export default function Header() {
     }
   };
 
+  const handleJoinButtonClick = () => {
+    <script> fbq("track", "Join_button"); </script>;
+    window.open(
+      "https://5159732834495.gumroad.com/l/AI_Job",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   const classes = useStyles();
 
   return (
@@ -160,16 +169,7 @@ export default function Header() {
                 <Button
                   color="secondary"
                   variant="outlined"
-                  onClick={() => {
-                    <script type="text/javascript">
-                      fbq("track", "Join_button");
-                    </script>;
-                    window.open(
-                      "https://5159732834495.gumroad.com/l/AI_Job",
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                  }}
+                  onClick={handleJoinButtonClick}
                 >
                   JOIN THE COMMUNITY
                 </Button>
@@ -223,17 +223,7 @@ export default function Header() {
                   </Link>
 
                   <MenuItem
-                    onClick={() => {
-                      handleCloseNavMenu();
-                      <script type="text/javascript">
-                        fbq("track", "Join_button");
-                      </script>;
-                      window.open(
-                        "https://5159732834495.gumroad.com/l/AI_Job",
-                        "_blank",
-                        "noopener,noreferrer"
-                      );
-                    }}
+                    onClick={handleJoinButtonClick}
                     className={classes.menuItemCommunity}
                   >
                     Join the community
