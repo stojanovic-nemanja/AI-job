@@ -141,6 +141,15 @@ const item = {
 };
 
 function MainContent() {
+  const handleJoinButtonClick = () => {
+    // eslint-disable-next-line no-undef
+    fbq("track", "Button");
+    window.open(
+      "https://5159732834495.gumroad.com/l/AI_Job",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
   const classes = useStyles();
 
   return (
@@ -180,16 +189,7 @@ function MainContent() {
               variant="contained"
               color="secondary"
               className={classes.buttonClass}
-              onClick={() => {
-                <script type="text/javascript">
-                  fbq("track", "Join_button");
-                </script>;
-                window.open(
-                  "https://5159732834495.gumroad.com/l/AI_Job",
-                  "_blank",
-                  "noopener,noreferrer"
-                );
-              }}
+              onClick={handleJoinButtonClick}
             >
               Join us now!
             </Button>
